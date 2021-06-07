@@ -14,7 +14,8 @@ class Barang extends ActiveRecord
             [['kode_barang','nama_barang','satuan','id_jenis','id_supplier','harga','stok'],'required'],
             [['kode_barang','nama_barang','satuan'],'string'],
             [['id_jenis','id_supplier','stok'],'integer'],
-            [['harga'],'double']
+            [['harga'],'double'],
+            ['tanggalMasuk', 'date', 'timestampAttribute' => 'tanggalMasuk']
         ];
     }
 }

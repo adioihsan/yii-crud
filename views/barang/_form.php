@@ -18,7 +18,10 @@ use app\models\Supplier;
         ArrayHelper::map(Supplier::find()->all(),'id','nama_supplier'),
         ['prompt'=>'Pilih']) ->label('Supplier'); ?>
     <?= $form -> field($model,'harga')->textInput() ?>
-    <?= $form -> field($model,'stok')->textInput() ?>    
+    <?= $form -> field($model,'stok')->textInput() ?>
+    <?= $form->field($model, 'tanggalMasuk')->widget(\yii\jui\DatePicker::className(), [
+    'options' => ['class' => 'form-control'], ]) ?>
+    
     <div class="form-group">
     <?= Html::submitButton('Submit',['class'=>'btn btn-primary']) ?>
     </div>
