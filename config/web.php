@@ -5,7 +5,7 @@ $db = require __DIR__ . '/db.php';
 
 $config = [
     'id' => 'basic',
-    'name' => 'Adio Ihsan - Crud Using Yii2 Crud Generator',
+    'name' => 'Adio Ihsan - Demo Site',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'aliases' => [
