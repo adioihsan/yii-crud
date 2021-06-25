@@ -39,9 +39,14 @@ AppAsset::register($this);
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
             ['label' => 'Home', 'url' => ['/site/index']],
-            ['label' => 'Data Barang', 'url' => ['/barang']],
-            ['label' => 'Jenis Barang', 'url' => ['/jenis']],
-            ['label' => 'Supplier', 'url' => ['/supplier']],
+            ['label' => 'Kelola Barang', 'items' => [
+                ['label' => 'Data Barang', 'url' => ['/barang']],
+                     '<li class="divider"></li>',
+                     ['label' => 'Jenis Barang', 'url' => ['/jenis']],
+                     '<li class="divider"></li>',
+                     ['label' => 'Supplier', 'url' => ['/supplier']],
+                 ]
+            ],
             Yii::$app->user->isGuest ? (
                 ['label' => 'Login', 'url' => ['/site/login']]
             ) : (
