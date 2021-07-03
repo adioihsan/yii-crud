@@ -12,16 +12,13 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'id_mahasiswa')->textInput() ?>
-
     <?= $form->field($model, 'nama_mahasiswa')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'jenis_kelamin')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'dob')->widget(\yii\jui\DatePicker::className(), [
-    'options' => ['class' => 'form-control'], ]) ?>
+    <?= $form->field($model, 'prodi')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'id_prodi')->textInput() ?>
+    <?= $form->field($model, 'jurusan')->textInput(['maxlength' => true]) ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

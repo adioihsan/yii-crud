@@ -29,8 +29,9 @@ $this->params['breadcrumbs'][] = $this->title;
             'id_mahasiswa',
             'nama_mahasiswa',
             'jenis_kelamin',
-            'dob',
-            'id_prodi',
+            'tanggal_lahir',
+            'prodi',
+            //'jurusan',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

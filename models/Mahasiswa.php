@@ -10,10 +10,9 @@ use Yii;
  * @property int $id_mahasiswa
  * @property string|null $nama_mahasiswa
  * @property string|null $jenis_kelamin
- * @property string|null $dob
- * @property int|null $id_prodi
- *
- * @property Prodi $prodi
+ * @property string|null $tanggal_lahir
+ * @property string|null $prodi
+ * @property string|null $jurusan
  */
 class Mahasiswa extends \yii\db\ActiveRecord
 {
@@ -31,13 +30,10 @@ class Mahasiswa extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id_mahasiswa'], 'required'],
-            [['id_mahasiswa', 'id_prodi'], 'integer'],
-            [['dob'], 'safe'],
-            [['nama_mahasiswa'], 'string', 'max' => 100],
+            [['tanggal_lahir'], 'safe'],
+            [['nama_mahasiswa', 'jurusan'], 'string', 'max' => 100],
             [['jenis_kelamin'], 'string', 'max' => 11],
-            [['id_mahasiswa'], 'unique'],
-            [['id_prodi'], 'exist', 'skipOnError' => true, 'targetClass' => Prodi::className(), 'targetAttribute' => ['id_prodi' => 'id_prodi']],
+            [['prodi'], 'string', 'max' => 10],
         ];
     }
 
@@ -50,18 +46,9 @@ class Mahasiswa extends \yii\db\ActiveRecord
             'id_mahasiswa' => 'Id Mahasiswa',
             'nama_mahasiswa' => 'Nama Mahasiswa',
             'jenis_kelamin' => 'Jenis Kelamin',
-            'dob' => 'Tanggal Lahir',
-            'id_prodi' => 'Id Prodi',
+            'tanggal_lahir' => 'Tanggal Lahir',
+            'prodi' => 'Prodi',
+            'jurusan' => 'Jurusan',
         ];
-    }
-
-    /**
-     * Gets query for [[Prodi]].
-     *
-     * @return \yii\db\ActiveQuery
-     */
-    public function getProdi()
-    {
-        return $this->hasOne(Prodi::className(), ['id_prodi' => 'id_prodi']);
     }
 }

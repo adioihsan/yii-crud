@@ -11,8 +11,6 @@ use Yii;
  * @property int|null $id_jurusan
  * @property string|null $nama_prodi
  * @property string|null $keterangan
- *
- * @property Jurusan $jurusan
  */
 class Prodi extends \yii\db\ActiveRecord
 {
@@ -35,7 +33,6 @@ class Prodi extends \yii\db\ActiveRecord
             [['nama_prodi'], 'string', 'max' => 50],
             [['keterangan'], 'string', 'max' => 100],
             [['id_prodi'], 'unique'],
-            [['id_jurusan'], 'exist', 'skipOnError' => true, 'targetClass' => Jurusan::className(), 'targetAttribute' => ['id_jurusan' => 'id_jurusan']],
         ];
     }
 
@@ -50,15 +47,5 @@ class Prodi extends \yii\db\ActiveRecord
             'nama_prodi' => 'Nama Prodi',
             'keterangan' => 'Keterangan',
         ];
-    }
-
-    /**
-     * Gets query for [[Jurusan]].
-     *
-     * @return \yii\db\ActiveQuery
-     */
-    public function getJurusan()
-    {
-        return $this->hasOne(Jurusan::className(), ['id_jurusan' => 'id_jurusan']);
     }
 }

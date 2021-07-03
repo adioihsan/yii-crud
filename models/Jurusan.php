@@ -10,8 +10,6 @@ use Yii;
  * @property int $id_jurusan
  * @property string|null $kode_jurusan
  * @property string|null $nama_jurusan
- *
- * @property Prodi[] $prodis
  */
 class Jurusan extends \yii\db\ActiveRecord
 {
@@ -29,11 +27,8 @@ class Jurusan extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id_jurusan'], 'required'],
-            [['id_jurusan'], 'integer'],
             [['kode_jurusan'], 'string', 'max' => 20],
             [['nama_jurusan'], 'string', 'max' => 50],
-            [['id_jurusan'], 'unique'],
         ];
     }
 
@@ -47,15 +42,5 @@ class Jurusan extends \yii\db\ActiveRecord
             'kode_jurusan' => 'Kode Jurusan',
             'nama_jurusan' => 'Nama Jurusan',
         ];
-    }
-
-    /**
-     * Gets query for [[Prodis]].
-     *
-     * @return \yii\db\ActiveQuery
-     */
-    public function getProdis()
-    {
-        return $this->hasMany(Prodi::className(), ['id_jurusan' => 'id_jurusan']);
     }
 }
