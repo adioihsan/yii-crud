@@ -47,8 +47,8 @@ class Mahasiswa extends \yii\db\ActiveRecord
             'nama_mahasiswa' => 'Nama Mahasiswa',
             'jenis_kelamin' => 'Jenis Kelamin',
             'tanggal_lahir' => 'Tanggal Lahir',
-            'id_prodi' => 'Id Prodi',
-            'id_jurusan' => 'Id Jurusan',
+            'id_prodi' => 'Prodi',
+            'id_jurusan' => 'Jurusan',
         ];
     }
 }
