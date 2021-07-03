@@ -109,6 +109,23 @@ class MahasiswaController extends Controller
         return $this->redirect(['index']);
     }
 
+    public function actionSubcat(){
+        Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        $out = [];
+        if(isset($_POST['depdrop_parents'])){
+            $parents = $_POST['depdrop_parents'];
+            if ($parents != null) {
+                $cat_id = $parents[0];
+                $out = Prodi::getProdiList($cat_id);
+
+                return ['output'=>$out, 'selected'=>''];
+            }
+        }
+        return ['output'=>'', 'selected'=>''];
+    }
+
+    
+
     /**
      * Finds the Mahasiswa model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.

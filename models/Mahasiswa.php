@@ -11,8 +11,8 @@ use Yii;
  * @property string|null $nama_mahasiswa
  * @property string|null $jenis_kelamin
  * @property string|null $tanggal_lahir
- * @property string|null $prodi
- * @property string|null $jurusan
+ * @property int|null $id_prodi
+ * @property int|null $id_jurusan
  */
 class Mahasiswa extends \yii\db\ActiveRecord
 {
@@ -31,10 +31,9 @@ class Mahasiswa extends \yii\db\ActiveRecord
     {
         return [
             [['tanggal_lahir'], 'safe'],
-            ['tanggal_lahir', 'date', 'timestampAttribute' => 'tanggal_lahir'],
-            [['nama_mahasiswa', 'jurusan'], 'string', 'max' => 100],
+            [['id_prodi', 'id_jurusan'], 'integer'],
+            [['nama_mahasiswa'], 'string', 'max' => 100],
             [['jenis_kelamin'], 'string', 'max' => 11],
-            [['prodi'], 'string', 'max' => 10],
         ];
     }
 
@@ -48,8 +47,8 @@ class Mahasiswa extends \yii\db\ActiveRecord
             'nama_mahasiswa' => 'Nama Mahasiswa',
             'jenis_kelamin' => 'Jenis Kelamin',
             'tanggal_lahir' => 'Tanggal Lahir',
-            'prodi' => 'Prodi',
-            'jurusan' => 'Jurusan',
+            'id_prodi' => 'Id Prodi',
+            'id_jurusan' => 'Id Jurusan',
         ];
     }
 }

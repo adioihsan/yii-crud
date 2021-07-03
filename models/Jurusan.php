@@ -43,4 +43,8 @@ class Jurusan extends \yii\db\ActiveRecord
             'nama_jurusan' => 'Nama Jurusan',
         ];
     }
+    public static function getJurusan()
+    {
+        return Self::find()->select(['nama_jurusan'])->indexBy('id_jurusan')->column();
+    }
 }
