@@ -31,6 +31,7 @@ class Mahasiswa extends \yii\db\ActiveRecord
     {
         return [
             [['tanggal_lahir'], 'safe'],
+            ['tanggal_lahir', 'date', 'timestampAttribute' => 'tanggal_lahir'],
             [['nama_mahasiswa', 'jurusan'], 'string', 'max' => 100],
             [['jenis_kelamin'], 'string', 'max' => 11],
             [['prodi'], 'string', 'max' => 10],

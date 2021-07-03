@@ -16,6 +16,9 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'jenis_kelamin')->textInput(['maxlength' => true]) ?>
 
+    <?= $form->field($model, 'tanggal_lahir')->widget(\yii\jui\DatePicker::className(), [
+    'options' => ['class' => 'form-control'], ]) ?>
+
     <?= $form->field($model, 'prodi')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'jurusan')->textInput(['maxlength' => true]) ?>
