@@ -17,7 +17,7 @@ class MahasiswaSearch extends Mahasiswa
     public function rules()
     {
         return [
-            [['id_mahasiswa', 'id_prodi', 'id_jurusan'], 'integer'],
+            [['id_mahasiswa', 'id_provinsi', 'id_kota', 'id_jurusan', 'id_prodi'], 'integer'],
             [['nama_mahasiswa', 'jenis_kelamin', 'tanggal_lahir'], 'safe'],
         ];
     }
@@ -60,8 +60,10 @@ class MahasiswaSearch extends Mahasiswa
         $query->andFilterWhere([
             'id_mahasiswa' => $this->id_mahasiswa,
             'tanggal_lahir' => $this->tanggal_lahir,
-            'id_prodi' => $this->id_prodi,
+            'id_provinsi' => $this->id_provinsi,
+            'id_kota' => $this->id_kota,
             'id_jurusan' => $this->id_jurusan,
+            'id_prodi' => $this->id_prodi,
         ]);
 
         $query->andFilterWhere(['like', 'nama_mahasiswa', $this->nama_mahasiswa])

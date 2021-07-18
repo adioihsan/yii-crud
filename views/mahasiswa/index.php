@@ -30,8 +30,10 @@ $this->params['breadcrumbs'][] = $this->title;
             'nama_mahasiswa',
             'jenis_kelamin',
             'tanggal_lahir',
-            'id_prodi',
+            'id_provinsi',
+            //'id_kota',
             //'id_jurusan',
+            //'id_prodi',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

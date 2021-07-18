@@ -23,9 +23,13 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'tanggal_lahir') ?>
 
-    <?= $form->field($model, 'id_prodi') ?>
+    <?= $form->field($model, 'id_provinsi') ?>
+
+    <?php // echo $form->field($model, 'id_kota') ?>
 
     <?php // echo $form->field($model, 'id_jurusan') ?>
+
+    <?php // echo $form->field($model, 'id_prodi') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
