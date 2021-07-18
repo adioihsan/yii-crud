@@ -8,9 +8,9 @@ use Yii;
  * This is the model class for table "prodi".
  *
  * @property int $id_prodi
- * @property int|null $id_jurusan
- * @property string|null $nama_prodi
- * @property string|null $keterangan
+ * @property int $id_jurusan
+ * @property string $nama_prodi
+ * @property string $keterangan
  */
 class Prodi extends \yii\db\ActiveRecord
 {
@@ -28,11 +28,10 @@ class Prodi extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id_prodi'], 'required'],
-            [['id_prodi', 'id_jurusan'], 'integer'],
+            [['id_jurusan', 'nama_prodi', 'keterangan'], 'required'],
+            [['id_jurusan'], 'integer'],
+            [['keterangan'], 'string'],
             [['nama_prodi'], 'string', 'max' => 50],
-            [['keterangan'], 'string', 'max' => 100],
-            [['id_prodi'], 'unique'],
         ];
     }
 
@@ -48,23 +47,4 @@ class Prodi extends \yii\db\ActiveRecord
             'keterangan' => 'Keterangan',
         ];
     }
-    public static function getProdi()
-    {
-        return Self::find()->select(['nama_prodi'])->indexBy('id_prodi')->column();
-    }
-	public static function getProdiList($cat_id, $dependent = false)
-	{
-		$subCategory = self::find()
-			->where(['id_jurusan' => $cat_id]);
-			
-		// return $subCategory;
-		// $subCategory = self::find()
-		// 	->where(['category_id' => $categoryID]);
-
-		if ($cat_id == "") {
-			return $subCategory->select(['id_prodi', 'nama_prodi as name'])->asArray()->all();
-		} else {
-			return $subCategory->select(['prodi'])->indexBy('id_prodi')->column();
-		}
-	}
 }

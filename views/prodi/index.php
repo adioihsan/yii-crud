@@ -29,7 +29,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'id_prodi',
             'id_jurusan',
             'nama_prodi',
-            'keterangan',
+            'keterangan:ntext',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
