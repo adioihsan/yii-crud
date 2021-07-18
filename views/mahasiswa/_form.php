@@ -2,6 +2,8 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use app\models\Provinsi;
+use app\models\Kota;
 use app\models\Prodi;
 use app\models\Jurusan;
 use kartik\date\DatePicker;
@@ -22,30 +24,33 @@ use yii\helpers\Url;
     <?php $model->isNewRecord==1? $model->jenis_kelamin='L':$model->jenis_kelamin; ?>
 		<?= $form->field($model, 'jenis_kelamin')->radioList(array('Laki-Laki'=>'Laki-laki', 'Perempuan'=>'Perempuan'))->label('Jenis Kelamin') ?>
 
-    <?= $form->field($model, 'tanggal_lahir')->widget(DatePicker::classname(), [
-        'options' => ['placeholder' => 'Tanggal Lahir'],
-        'type' => DatePicker::TYPE_COMPONENT_APPEND,
-        'value' => '11-Jan-2000',
-        'pluginOptions' => [
+    <?= $form->field($model, 'tanggal_lahir')->widget(DatePicker::classname(),[
+    'name' => 'dp_2',
+    'type' => DatePicker::TYPE_COMPONENT_PREPEND,
+    'value' => '2000-12-02',
+    'pluginOptions' => [
         'autoclose'=>true,
-        'format' => 'dd-M-yyyy'
+        'format' => 'yyyy-mm-dd'
     ]
     ]); ?>
 
-
-    <?= $form->field($model, 'id_jurusan')->dropDownList(Jurusan::getJurusan(),
-        ['id' => 'cat-id', 'prompt' => 'Pilih Jurusan']) 
+    <?= $form->field($model, 'id_provinsi')->dropDownList(Provinsi::getProvinsiList(),
+        ['id' => 'id_provinsi', 'prompt' => 'Pilih Provinsi']) 
     ?>
 
-    <?= $form->field($model, 'id_prodi')->widget(DepDrop::classname(), [
-        'data' => Prodi::getProdiList($model->id_jurusan),
-        'options' => ['id' => 'prodi', 'prompt' => 'Pilih Prodi'],
+<?= $form->field($model, 'id_kota')->widget(DepDrop::classname(), [
+        // 'data' => Kota::getKotaList($model->id_provinsi),
+        'options' => ['id' => 'kota', 'prompt' => 'Pilih Kota'],
         'pluginOptions' => [
-            'depends' => ['cat-id'],
-            'placeholder' => 'Pilih Prodi',
-            'url' => Url::to(['mahasiswa/subcat'])
+            'depends' => ['id_provinsi'],
+            'placeholder' => 'Pilih Kota',
+            'url' => Url::to(['mahasiswa/kota'])
         ]
     ]) ?>
+
+    <?= $form->field($model, 'id_jurusan')->textInput() ?>
+
+    <?= $form->field($model, 'id_prodi')->textInput() ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
