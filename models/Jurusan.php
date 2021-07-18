@@ -8,7 +8,7 @@ use Yii;
  * This is the model class for table "jurusan".
  *
  * @property int $id_jurusan
- * @property int $nama_jurusan
+ * @property string $nama_jurusan
  * @property string $keterangan
  */
 class Jurusan extends \yii\db\ActiveRecord
@@ -28,8 +28,8 @@ class Jurusan extends \yii\db\ActiveRecord
     {
         return [
             [['nama_jurusan', 'keterangan'], 'required'],
-            [['nama_jurusan'], 'integer'],
             [['keterangan'], 'string'],
+            [['nama_jurusan'], 'string', 'max' => 50],
         ];
     }
 
