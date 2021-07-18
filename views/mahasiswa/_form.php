@@ -48,6 +48,10 @@ use yii\helpers\Url;
         ]
     ]) ?>
 
+    <?= $form->field($model, 'id_jurusan')->dropDownList(Jurusan::getJurusanList(),
+        ['id' => 'id_jurusan', 'prompt' => 'Pilih Jurusan']) 
+    ?>
+
     <?= $form->field($model, 'id_jurusan')->textInput() ?>
 
     <?= $form->field($model, 'id_prodi')->textInput() ?>
