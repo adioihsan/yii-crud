@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use app\models\Jurusan;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Prodi */
@@ -12,7 +13,9 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'id_jurusan')->textInput() ?>
+    <?= $form->field($model, 'id_jurusan')->dropDownList(Jurusan::getJurusanList(),
+        ['id' => 'id_jurusan', 'prompt' => 'Pilih Jurusan']) 
+    ?>
 
     <?= $form->field($model, 'nama_prodi')->textInput(['maxlength' => true]) ?>
 

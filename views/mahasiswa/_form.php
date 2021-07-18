@@ -38,7 +38,7 @@ use yii\helpers\Url;
         ['id' => 'id_provinsi', 'prompt' => 'Pilih Provinsi']) 
     ?>
 
-<?= $form->field($model, 'id_kota')->widget(DepDrop::classname(), [
+    <?= $form->field($model, 'id_kota')->widget(DepDrop::classname(), [
         // 'data' => Kota::getKotaList($model->id_provinsi),
         'options' => ['id' => 'kota', 'prompt' => 'Pilih Kota'],
         'pluginOptions' => [
@@ -52,9 +52,14 @@ use yii\helpers\Url;
         ['id' => 'id_jurusan', 'prompt' => 'Pilih Jurusan']) 
     ?>
 
-    <?= $form->field($model, 'id_jurusan')->textInput() ?>
-
-    <?= $form->field($model, 'id_prodi')->textInput() ?>
+    <?= $form->field($model, 'id_prodi')->widget(DepDrop::classname(), [
+        'options' => ['id' => 'prodi', 'prompt' => 'Pilih Prodi'],
+        'pluginOptions' => [
+            'depends' => ['id_jurusan'],
+            'placeholder' => 'Pilih Prodi',
+            'url' => Url::to(['mahasiswa/prodi'])
+        ]
+    ]) ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

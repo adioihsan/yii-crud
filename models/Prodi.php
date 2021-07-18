@@ -47,4 +47,9 @@ class Prodi extends \yii\db\ActiveRecord
             'keterangan' => 'Keterangan',
         ];
     }
+    public static function getProdiList($id_jurusan){
+
+        return self::find() -> select(['id_prodi as id','nama_prodi as name']) -> where(['id_jurusan' => $id_jurusan])
+        ->asArray()->all();
+    }
 }
