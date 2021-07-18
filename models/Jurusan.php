@@ -8,8 +8,8 @@ use Yii;
  * This is the model class for table "jurusan".
  *
  * @property int $id_jurusan
- * @property string|null $kode_jurusan
- * @property string|null $nama_jurusan
+ * @property int $nama_jurusan
+ * @property string $keterangan
  */
 class Jurusan extends \yii\db\ActiveRecord
 {
@@ -27,8 +27,9 @@ class Jurusan extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['kode_jurusan'], 'string', 'max' => 20],
-            [['nama_jurusan'], 'string', 'max' => 50],
+            [['nama_jurusan', 'keterangan'], 'required'],
+            [['nama_jurusan'], 'integer'],
+            [['keterangan'], 'string'],
         ];
     }
 
@@ -39,12 +40,8 @@ class Jurusan extends \yii\db\ActiveRecord
     {
         return [
             'id_jurusan' => 'Id Jurusan',
-            'kode_jurusan' => 'Kode Jurusan',
             'nama_jurusan' => 'Nama Jurusan',
+            'keterangan' => 'Keterangan',
         ];
-    }
-    public static function getJurusan()
-    {
-        return Self::find()->select(['nama_jurusan'])->indexBy('id_jurusan')->column();
     }
 }
