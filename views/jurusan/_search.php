@@ -17,9 +17,9 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'id_jurusan') ?>
 
-    <?= $form->field($model, 'kode_jurusan') ?>
-
     <?= $form->field($model, 'nama_jurusan') ?>
+
+    <?= $form->field($model, 'keterangan') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
