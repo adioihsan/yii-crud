@@ -5,6 +5,7 @@ namespace app\controllers;
 use Yii;
 use app\models\Mahasiswa;
 use app\models\MahasiswaSearch;
+use app\models\Kota;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -109,23 +110,6 @@ class MahasiswaController extends Controller
         return $this->redirect(['index']);
     }
 
-    public function actionSubcat(){
-        Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
-        $out = [];
-        if(isset($_POST['depdrop_parents'])){
-            $parents = $_POST['depdrop_parents'];
-            if ($parents != null) {
-                $cat_id = $parents[0];
-                $out = Prodi::getProdiList($cat_id);
-
-                return ['output'=>$out, 'selected'=>''];
-            }
-        }
-        return ['output'=>'', 'selected'=>''];
-    }
-
-    
-
     /**
      * Finds the Mahasiswa model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
@@ -141,4 +125,18 @@ class MahasiswaController extends Controller
 
         throw new NotFoundHttpException('The requested page does not exist.');
     }
+
+    public static function actionKota(){
+        Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        $out = [];
+        if(isset($_POST['depdrop_parents'])){
+            $parents = $_POST['depdrop_parents'];
+            if ($parents != null) {
+                $id_provinsi = $parents[0];
+                $out = Kota::getKotaList($id_provinsi);
+                return ['output'=>$out, 'selected'=>''];
+            }
+        }
+        return ['output'=>'', 'selected'=>''];
+    }  
 }
