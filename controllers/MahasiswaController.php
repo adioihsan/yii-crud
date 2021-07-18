@@ -68,8 +68,10 @@ class MahasiswaController extends Controller
     {
         $model = new Mahasiswa();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id_mahasiswa]);
+        if ($model->load(Yii::$app->request->post())) {
+            if($model->save()){
+                return $this->redirect(['view', 'id' => $model->id_mahasiswa]);
+            }
         }
 
         return $this->render('create', [
@@ -88,7 +90,9 @@ class MahasiswaController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post())) {
+            $model->judul_foto = $model->getUploadedFileUrl('file_foto');
+            $model->save();
             return $this->redirect(['view', 'id' => $model->id_mahasiswa]);
         }
 

@@ -1,5 +1,6 @@
 <p>
 <h3>Demo Site : <b><a href="http://yiidemo.fast-page.org">http://yiidemo.fast-page.org</a></b></h3>
+<p>*Last update July-01-2021
 </p>
 <p align="center">
     <a href="https://github.com/yiisoft" target="_blank">

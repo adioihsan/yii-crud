@@ -8,6 +8,7 @@ use app\models\Prodi;
 use app\models\Jurusan;
 use kartik\date\DatePicker;
 use kartik\depdrop\DepDrop;
+use kartik\file\FileInput;
 use yii\helpers\Url;
 
 /* @var $this yii\web\View */
@@ -60,6 +61,10 @@ use yii\helpers\Url;
             'url' => Url::to(['mahasiswa/prodi'])
         ]
     ]) ?>
+
+    <?= $form->field($model, 'file_foto')->widget(FileInput::classname(), [
+    'options' => ['accept' => 'image/*'],
+    ]); ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

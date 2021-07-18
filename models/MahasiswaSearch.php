@@ -18,7 +18,7 @@ class MahasiswaSearch extends Mahasiswa
     {
         return [
             [['id_mahasiswa', 'id_provinsi', 'id_kota', 'id_jurusan', 'id_prodi'], 'integer'],
-            [['nama_mahasiswa', 'jenis_kelamin', 'tanggal_lahir'], 'safe'],
+            [['nama_mahasiswa', 'jenis_kelamin', 'tanggal_lahir','file_foto'], 'safe'],
         ];
     }
 

@@ -15,9 +15,11 @@ use Yii;
  * @property int $id_kota
  * @property int $id_jurusan
  * @property int $id_prodi
+ * @property string $judul_foto
  */
 class Mahasiswa extends \yii\db\ActiveRecord
 {
+    public $file_foto;
     /**
      * {@inheritdoc}
      */
@@ -32,11 +34,12 @@ class Mahasiswa extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['nama_mahasiswa', 'jenis_kelamin', 'tanggal_lahir', 'id_provinsi', 'id_kota', 'id_jurusan', 'id_prodi'], 'required'],
+            [['nama_mahasiswa', 'jenis_kelamin', 'tanggal_lahir', 'id_provinsi', 'id_kota', 'id_jurusan', 'id_prodi', 'judul_foto'], 'required'],
             [['tanggal_lahir'], 'safe'],
             [['id_provinsi', 'id_kota', 'id_jurusan', 'id_prodi'], 'integer'],
             [['nama_mahasiswa'], 'string', 'max' => 50],
             [['jenis_kelamin'], 'string', 'max' => 20],
+            [['file_foto'],'file'],
         ];
     }
 
@@ -54,6 +57,17 @@ class Mahasiswa extends \yii\db\ActiveRecord
             'id_kota' => 'Id Kota',
             'id_jurusan' => 'Id Jurusan',
             'id_prodi' => 'Id Prodi',
+            'file_foto' => 'Foto',
+        ];
+    }
+    public function behaviors(){
+        return [
+            [
+                'class' => '\yiidreamteam\upload\FileUploadBehavior',
+                'attribute' => 'file_foto',
+                'filePath' => '@app/files/images/mahasiswa/[[filename]].[[extension]]',
+                'fileUrl' => 'images/mahasiswa/[filename]].[[extension]]',
+            ],
         ];
     }
 }
