@@ -34,7 +34,7 @@ class Mahasiswa extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['nama_mahasiswa', 'jenis_kelamin', 'tanggal_lahir', 'id_provinsi', 'id_kota', 'id_jurusan', 'id_prodi', 'judul_foto'], 'required'],
+            [['nama_mahasiswa', 'jenis_kelamin', 'tanggal_lahir', 'id_provinsi', 'id_kota', 'id_jurusan', 'id_prodi'], 'required'],
             [['tanggal_lahir'], 'safe'],
             [['id_provinsi', 'id_kota', 'id_jurusan', 'id_prodi'], 'integer'],
             [['nama_mahasiswa'], 'string', 'max' => 50],
